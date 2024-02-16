@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>27.01.2024</title>
+    <style>
+        body{
+            background-image: url("https://unblast.com/wp-content/uploads/2021/01/Space-Background-Images.jpg");
+            background-color: #cccccc;
+        }
+
+        a {
+            background-color: beige;
+            font-size: 75px;
+            color: darkcyan;
+        }
+
+        h1 {
+            font-size: 100px;
+            height: 125px;
+            width: fit-content;
+            border-bottom-left-radius: 25px;
+            border-right: wheat;
+            border-bottom-right-radius: 25px;
+            background-color: beige;
+            margin-bottom: 120px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>"Hello, world!"</h1>
+        <a th:text="${result}"></a>
+    </center>
+</body>
+</html>

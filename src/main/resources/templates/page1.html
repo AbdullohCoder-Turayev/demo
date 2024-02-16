@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>First Page</title>
+    <style>
+        body {
+            background: #1a1e23;
+        }
+
+        h1 {
+            font-family: "Courier New", sans-serif;
+            text-align: center;
+            color: #01b9d2;
+        }
+
+        .btn {
+            --hue: 190;
+            position: relative;
+            padding: 1rem 3rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: white;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-color: hsl(var(--hue), 100%, 41%);
+            border: 1px solid hsl(var(--hue), 100%, 41%);
+            outline: transparent;
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+            transition: 0.25s;
+        }
+
+        .btn:hover {
+            background: hsl(var(--hue), 100%, 31%);
+        }
+
+        .btn-primary {
+            --hue: 187;
+        }
+
+        .btn-ghost {
+            color: hsl(var(--hue), 100%, 41%);
+            background-color: transparent;
+            border-color: hsl(var(--hue), 100%, 41%);
+        }
+
+        .btn-ghost:hover {
+            color: white;
+        }
+
+        .btn-shine {
+            color: white;
+        }
+
+        .btn-shine::before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg,
+            transparent,
+            hsla(var(--hue), 100%, 41%, 0.5),
+            transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .btn-shine:hover {
+            background: transparent;
+            box-shadow: 0 0 20px 10px hsla(var(--hue), 100%, 41%, 0.5);
+        }
+
+        .btn-shine:hover::before {
+            transform: translateX(100%);
+        }
+
+        table {
+            text-align: center;
+        }
+
+        .upper-text {
+            font-family: Rockwell, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+<script>
+    var count = 10;
+
+    function countDown(){
+        document.getElementById('count').innerText ='Time to be redirected: ' + count + ' sec';
+        if (count == 0){
+            document.getElementById('redirectText').style.display = 'block';
+            document.getElementById('yesButton').style.display = 'block';
+            document.getElementById('noButton').style.display = 'block';
+        }
+        else {
+            count--;
+            setTimeout(countDown , 1000);
+        }
+    }
+
+    function noButton(){
+        document.getElementById('yesButton').style.display = 'none';
+        document.getElementById('noButton').style.display = 'none';
+        document.getElementById('redirectText').style.display = 'none';
+        count = 10;
+        countDown();
+    }
+
+    document.addEventListener('DOMContentLoaded', function (){
+        countDown();
+    })
+</script>
+<h1 class="upper-text">This is first page!</h1>
+<h1 id='count'> 10 </h1>
+
+<div>
+    <center>
+        <table>
+            <tr>
+                <th colspan="2">
+                    <h1 class="askText" id="redirectText" style="display: none">Do you wanna to be redirected to the
+                        second page?</h1>
+                </th>
+            </tr>
+            <tr>
+                <td colspan="1">
+                    <button id="yesButton" class="btn btn-primary btn-ghost btn-shine" onclick="window.location.href = '/page2'" style="display: none">YES</button>
+                </td>
+                <td colspan="2">
+                    <button id="noButton" class="btn btn-primary btn-ghost btn-shine" onclick="noButton()" style="display: none">NO</button>
+                </td>
+            </tr>
+        </table>
+    </center>
+</div>
+</body>
+
+</html>
